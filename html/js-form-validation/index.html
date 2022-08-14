@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+</head>
+
+<body>
+    <form action="" method="POST" onsubmit="return validate();">
+        <div class="form-group">
+            <label for="name">Name: <input type="text" id="name" name="nameas"></label>
+            <span id="nameError"></span>
+        </div>
+        <div class="form-group">
+            <label for="email">Email: <input type="text" id="email" name="email"></label>
+            <span id="emailError"></span>
+        </div>
+        <div class="form-group">
+            <label for="mobile">Mobile Number: <input type="number" name="mobile" id="mobile"></label>
+            <span id="mobileError"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Submit" name="submit" id="submit">
+        </div>
+
+    </form>
+
+    <script>
+        function validate() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var mobile = document.getElementById('mobile').value;
+            var nameError = document.getElementById('nameError');
+            var emailError= document.getElementById('emailError');
+            var mobileError = document.getElementById('mobileError');
+
+
+            var name_check = /^[a-z]{5,30}$/;
+            var email_check = /^[A-Za-z]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z]{3}$/;
+            var mobile_check = /^[0-9]{10}$/
+
+
+            if (name_check.test(name)) {
+                document.getElementById("nameError").innerHTML = "";
+            } else {
+                document.getElementById("nameError").innerHTML = "* username must invalid. Must be between 5 to 30 characters";
+                // alert("invalid username");
+                return false;
+            }
+
+            if(email_check.test(email)){
+                emailError.innerHTML = "";
+            } else{
+                emailError.innerHTML = "Please enter correct email address.";
+                return false;
+            }
+
+            if(mobile_check.test(mobile)){
+                mobileError.innerHTML = "";
+            } else{
+                mobileError.innerHTML = "Mobile Number must be of 10 Digit."
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>

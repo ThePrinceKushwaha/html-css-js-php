@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop</title>
+</head>
+<body>
+        <p draggable="true">
+            Roses are red <br>
+            Violets are blue <br>
+
+            <span style="position:absoute; top:200px; left:0px; background-color:lightgray" onmousedown="grabber(event);">Andy</span>
+            <span style="position:absoute; top:200px; left:75px; background-color:lightgray" onmousedown="grabber(event);">Bndy</span>
+            <span style="position:absoute; top:200px; left:150px; background-color:lightgray" onmousedown="grabber(event);">Candy</span>
+            <span style="position:absoute; top:200px; left:225px; background-color:lightgray" onmousedown="grabber(event);">Dndy</span>
+            <span style="position:absoute; top:200px; left:300px; background-color:lightgray" onmousedown="grabber(event);">Endy</span>
+            <span style="position:absoute; top:200px; left:375px; background-color:lightgray" onmousedown="grabber(event);">Fndy</span>
+            <span style="position:absoute; top:200px; left:450px; background-color:lightgray" onmousedown="grabber(event);">Gndy</span>
+            <span style="position:absoute; top:250px; left:75px; background-color:lightgray" onmousedown="grabber(event);">HAndy</span>
+            <span style="position:absoute; top:250px; left:150px; background-color:lightgray" onmousedown="grabber(event);">Indy</span>
+            <span style="position:absoute; top:250px; left:225px; background-color:lightgray" onmousedown="grabber(event);">JAndy</span>
+            <span style="position:absoute; top:250px; left:300px; background-color:lightgray" onmousedown="grabber(event);">KAndy</span>
+        </p>
+
+
+
+        <script>
+            var diffX, diffY, theElement;
+
+            function grabber(event){
+                theElement= event.currentTarget;
+                var posX = parseInt(theElement.style.left);
+                var posY = parseInt(theElement.style.top);
+
+
+                diffX = event.clientX -posX;
+                diffY = event.clientY - posY;
+
+
+                document.addEventListene("mousemove", mover, true);
+                document.addEventListner("mouseup",dropper,true);
+
+                event.stoppropagation();
+                event.preventDafault();
+            }
+
+            function mover(event){
+                theElement.style.left = (event.clientX-diffX)+ "px";
+                theElement.style.top = (event.clientY-diffY)+ "px";
+
+                event.stoppropagation();
+            }
+
+
+            function dropper(event){
+                document.removeEventListener("mouseup", dropper, true);
+                document.removeEventListener("mousedown", mover, true);
+                event.stoppropagation();
+            }
+
+        </script>
+    
+</body>
+</html>

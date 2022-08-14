@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag & Drop</title>
+
+    <style>
+        section{
+            height:90%;
+            width:600px;
+            margin:100px auto;
+            display:flex;
+            justify-content: space-around;
+        }
+
+
+        .choice {
+            padding:10px;
+            width: 320px;
+            box-sizing: border-box;
+            height: 90%;
+            background: #e9eeec;
+            margin:10px;
+        }
+        p{
+            background-color: #027a43;
+            color:#fff;
+            padding:7px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            font-weight: 300;
+            font-family: roboto;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="choice">
+            <p draggable="true">Apple</p>
+            <p draggable="true">Litchi</p>
+            <p draggable="true">JackFruit</p>
+            <p draggable="true">Mango</p>
+            <p draggable="true">Kiwi</p>
+            <p draggable="true">Avocado</p>
+        </div>
+        <div class="choice"></div>
+        <div class="choice"></div>
+        <div class="choice"></div>
+        <div class="choice"></div>
+    </section>
+
+
+    <script>
+        let p = document.getElementByTagName('p');
+        let choice = document.getElementByTagName('choice');
+        let dragItem = null;
+
+        for (let i of p){
+                i.ondragstart = dragStart;
+                i.ondragend= dragEnd;
+                i.ondblclick = editable;
+        }
+    </script>
+</body>
+</html>
